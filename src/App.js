@@ -2,24 +2,25 @@ import React, {useEffect, useRef, useState} from "react";
 import ans from "./accets/ans.svg";
 import buy from "./accets/Buy.svg";
 import coin from "./accets/coin.svg";
-import hat from "./accets/cap.png";
 import spider from "./accets/spider.png";
 import watch from "./accets/Watch.svg";
 import infoButton from "./accets/info.svg";
-import er from "./accets/gg1.png";
-import background from "./accets/backgroung.svg"
+import er from "./accets/gg.png";
 import door from "./accets/rightDoor.svg";
 import platform from "./accets/platform.svg";
-import ggWithHat from "./accets/withHat.png";
 import bg1 from "./accets/bg12.svg";
 import bg2 from "./accets/bg2.svg";
 import bg3 from "./accets/bg3.svg";
 import bg4 from "./accets/bg4.svg";
 import bg5 from "./accets/bg5.svg";
 import cactus from "./accets/cactus.svg";
+import run from "./accets/run3.gif";
+import Videos from "./components/videos";
+import x from "./accets/x.svg";
 function App() {
    const scrollRef = useHorizontalScroll();
-   const [chSrc, setSrc] = useState(er);
+   const [chSrc, setSrc] = useState(run);
+   const [video, setVideo] = useState(false);
     const[ans1, setAns1] = useState(true);
     const[ans2, setAns2] = useState(true);
     const[ans3, setAns3] = useState(true);
@@ -62,12 +63,9 @@ function App() {
             const ch = charRef.current;
             if (ch) {
                 const onWheel = (e) => {
-                    const currentPosition = parseFloat(ch.style.left) || 0;
-                    // const newPosition = clamp(currentPosition + (e.deltaX || e.deltaY), 200, 15580);
                     const newPositionLeft = ch?.getBoundingClientRect()?.left;
                     const newPositionRight = ch?.getBoundingClientRect()?.left;
 
-                    console.log(newPositionRight, "element", getPlacementData(door1Ref)?.left, "bound")
                     if(newPositionRight > getPlacementData(ans1Ref)?.left && ans1) {
                         setAns1((prevAns1) => {
                             return false;
@@ -98,14 +96,6 @@ function App() {
                         });
                     }
 
-                    if (newPositionLeft > getPlacementData(hatDivRef)?.left) {
-                        setSrc(ggWithHat);
-                        hatRef.current.style.display = "none";
-                    }else {
-                        setSrc(er);
-                        hatRef.current.style.display = "block";
-                    }
-
                     if (newPositionRight > getPlacementData(coinDiv1Ref)?.left - 100){
                         coin1Ref.current.style.display = "none";
                     }else {
@@ -126,6 +116,8 @@ function App() {
 
                     if (newPositionLeft > getPlacementData(infoRef)?.right-200) {
                         ch.style.transform = "scaleX(-1)";
+                        setSrc(er);
+
                     }else {
                         ch.style.transform = "scaleX(1)";
                     }
@@ -138,6 +130,7 @@ function App() {
                         (newPositionRight > getPlacementData(coinDiv3Ref)?.left - 150 &&
                             newPositionLeft < getPlacementData(coinDiv3Ref)?.right+150)
                     ) {
+                        setSrc(er);
                         ch.style.bottom = "50%";
                     } else if (
                         (newPositionLeft > getPlacementData(platform1Ref)?.right - 100 &&
@@ -152,6 +145,7 @@ function App() {
                         newPositionRight < getPlacementData(door7Ref)?.left-20){
                         ch.style.bottom = "10%";
                     } else {
+                        setSrc(run);
                         ch.style.bottom = "20%";
                     }
 
@@ -175,17 +169,18 @@ function App() {
         return charRef;
     }
 
-  return (
+
+        return (
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
             <div className="absolute flex items-center left-[40%] z-[100] h-[100vh]">
                 <div className="flex items-center mb-[10%] justify-between w-[90vw]">
-                    {
-                        ans1 ?  <img src={ans} alt="" ref={ans1Ref} className="w-[50px]" id="ans1"/> :
-                            <div ref={ans1Ref}>
-                                <h1 className="text-2xl font-[Stolzl] text-white"> Lorem ipsum dolar amet  </h1>
-                            </div>
-                    }
+                    {ans1 ? <img src={ans} alt="" ref={ans1Ref} className="w-[50px]" id="ans2"/> :
+                        <div>
+                            <h1 className="text-2xl font-[Stolzl] text-white" ref={ans1Ref}> Lorem ipsum dolar
+                                amet </h1>
+                        </div>}
+
                     {
                         ans2 ?  <img src={ans} alt="" ref={ans2Ref} className="w-[50px]" id="ans2"/> :
                             <div>
@@ -200,23 +195,27 @@ function App() {
                     }
                 </div>
             </div>
-            <div className="absolute flex left-[85%] top-[31%] z-[100]" ref={door1Ref}>
+            <div className="absolute flex left-[85%] bottom-[20%] z-[100]" ref={door1Ref}>
                 <img src={door}  alt=""className=""/>
             </div>
             <img src={bg1} alt="" className="h-[100vh] w-auto"/>
         </div>
         <div className="relative w-[2775px]">
+            <div className="absolute flex items-center left-[36%] top-[1%] z-[100] h-[100vh]" id="buy1">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
+                    <img src={buy} alt=""className="w-[400px]" />
+                </a>
 
-            <div className="absolute flex items-center left-[33%] top-[1%] z-[100] h-[100vh]" id="buy1">
-                <img src={buy} alt=""className="w-[550px]" />
             </div>
             <div className="absolute flex left-[80%] top-[2%] z-[100]" id="buy2">
-                <img src={buy} alt=""className="w-[300px]" />
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
+                    <img src={buy} alt=""className="w-[300px]" />
+                </a>
             </div>
-            <div className="absolute flex left-[10%] top-[31%] z-[100]"  ref={door2Ref}>
+            <div className="absolute flex left-[10%] bottom-[20%] z-[100]"  ref={door2Ref}>
                 <img src={door}   alt=""className=""/>
             </div>
-            <div className="absolute flex left-[85%] top-[31%] z-[100]" ref={door3Ref}>
+            <div className="absolute flex right-[7%] bottom-[20%] z-[100]" ref={door3Ref}>
                 <img src={door} alt=""className=""/>
             </div>
             <div className="absolute flex left-[10%] top-[78%] z-[100]" id="infoButton">
@@ -228,7 +227,7 @@ function App() {
             <div className="absolute flex left-[55%] top-[78%] z-[100]" id="infoButton">
                 <img src={platform} ref={platform3Ref} alt=""className=""/>
             </div>
-            <div className="absolute flex left-[77%] top-[78%] z-[100]" id="infoButton">
+            <div className="absolute flex right-[7%] top-[78%] z-[100]" id="infoButton">
                 <img src={platform} ref={platform4Ref} alt=""className=""/>
             </div>
             <img src={bg2} alt="" className="h-[100vh] w-auto"/>
@@ -236,10 +235,10 @@ function App() {
         </div>
 
         <div className="relative w-[4213px]">
-            <div className="absolute flex left-[10%] top-[31%] z-[100]" id="infoButton" ref={door4Ref}>
+            <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door4Ref}>
                 <img src={door} alt=""className=""/>
             </div>
-            <div className="absolute flex left-[85%] top-[31%] z-[100]" id="infoButton" ref={door5Ref}>
+            <div className="absolute flex left-[85%] bottom-[20%] z-[100]" id="infoButton" ref={door5Ref}>
                 <img src={door} alt=""className=""/>
             </div>
 
@@ -269,33 +268,43 @@ function App() {
 
         <div className="relative w-[2586px]">
 
-            <div className="absolute flex left-[10%] top-[31%] z-[100]" id="infoButton" ref={door6Ref}>
+            <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door6Ref}>
                 <img src={door} alt=""className=""/>
             </div>
-            <div className="absolute flex left-[80%] top-[31%] z-[100]" id="infoButton" ref={door7Ref}>
+            <div className="absolute flex left-[80%] bottom-[20%] z-[100]" id="infoButton" ref={door7Ref}>
                 <img src={door} alt=""className=""/>
             </div>
 
-            <div className="absolute flex left-[70%] top-[70%] z-[100]" id="hat" ref={hatDivRef}>
-                <img src={hat} ref={hatRef} alt=""className="w-[180px]"/>
-            </div>
+            {video ? (
+                <>
+                    <div> <img src={x} className='w-[22px] h-[22px] hover:bg-orange-500 fixed z-[250] top-[5%] right-[24%]' onClick={() => setVideo(!video)}></img></div>
+                    <Videos/>
+                </>
+            ) :
+                (<div></div>)}
+
+            {/*<div className="absolute flex left-[70%] top-[70%] z-[100]" id="hat" ref={hatDivRef}>*/}
+            {/*    <img src={hat} ref={hatRef} alt=""className="w-[180px]"/>*/}
+            {/*</div>*/}
             <div className="absolute flex left-[87%] z-[100] rotate-[-135deg]" id="spider">
                 <img src={spider} alt=""className="w-[350px]"/>
             </div>
-            <div className="absolute flex left-[30%] top-[45%] z-[100]" id="watch">
-                <img src={watch} alt=""className="w-[500px]"/>
+            <div className="absolute flex flex-col left-[30%] top-[15%] z-[100] items-center gap-8" id="watch">
+                <p className="font-[Stolzl] text-white text-center w-[500px] text-2xl">Егер қызықсаңыз бір сабағымызды қарап көріңіз. Солай біздің білім беруімізге баға беріңіз.</p>
+                <img src={watch} alt="" className="w-[500px]" onClick={() => setVideo(!video)}/>
             </div>
-
             <img src={bg4} alt="" className="h-[100vh] w-auto"/>
 
         </div>
 
         <div className="relative w-[4471px]">
             <div className="absolute flex left-[68%] top-[15%] z-[100]" id="infoButton" ref={infoRef}>
-                <img src={infoButton} alt=""className="w-[450px]"/>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
+                <img src={infoButton} alt="" className="w-[450px]"/>
+                </a>
             </div>
-            <div className="absolute flex left-[10%] top-[31%] z-[100]" id="infoButton" ref={door8Ref}>
-                <img src={door} alt=""className=""/>
+            <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door8Ref}>
+                <img src={door} alt="" className=""/>
             </div>
             <img src={bg5} alt="" className="h-[100vh] w-auto"/>
 
@@ -305,18 +314,18 @@ function App() {
         <div
             ref={useMoveCharacter()}
             style={{
-                width: '120px',
                 position: 'fixed',
                 left: '40%',
                 bottom: '20%',
                 zIndex: 100,
             }}
+            id="animatedImage"
         >
             <img
                 ref={characterRef}
                 src={chSrc}
                 alt=""
-                className="w-[180px]"
+                className="w-[150px]"
             />
         </div>
 

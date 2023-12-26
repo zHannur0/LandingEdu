@@ -11,6 +11,7 @@ module.exports = {
         'bg3': "url('./accets/bg3.svg')",
         'bg4': "url('./accets/bg4.svg')",
         'bg5': "url('./accets/bg5.svg')",
+        "run": "url('./accets/run3.gif')",
 
       }
     },
