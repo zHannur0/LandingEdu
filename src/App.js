@@ -116,24 +116,48 @@ function App() {
                         ans3Ref.current.classList.remove('coin-remove-animation');
                     }
 
+                    if (newPositionRight > getPlacementData(coinDiv1Ref)?.left && why1.current.style.display === "none") {
+                            why1.current.style.display = 'block';
+                            coin1Ref.current.style.display = 'none';
+                    } if (newPositionRight > getPlacementData(coinDiv2Ref)?.left && why2.current.style.display === "none") {
+                            why2.current.style.display = 'block';
+                            coin2Ref.current.style.display = 'none';
+                    } if (newPositionRight > getPlacementData(coinDiv3Ref)?.left && why3.current.style.display === "none") {
+                            why3.current.style.display = 'block';
+                            coin3Ref.current.style.display = 'none';
+                    }
 
-                    if (newPositionRight > getPlacementData(coinDiv1Ref)?.left - 100){
-                        coin1Ref.current.style.display = "none";
-                    }else {
+                    if (newPositionRight < getPlacementData(coinDiv1Ref)?.left) {
                         coin1Ref.current.style.display = "block";
-                    }
+                        why1.current.style.display = "none";
 
-                    if (newPositionRight > getPlacementData(coinDiv2Ref)?.left - 100){
-                        coin2Ref.current.style.display = "none";
-                    }else {
+                    } if (newPositionRight < getPlacementData(coinDiv2Ref)?.left) {
                         coin2Ref.current.style.display = "block";
+                        why2.current.style.display = "none";
+
+                    } if (newPositionRight < getPlacementData(coinDiv3Ref)?.left) {
+                        coin3Ref.current.style.display = "block";
+                        why3.current.style.display = "none";
                     }
 
-                    if (newPositionRight > getPlacementData(coinDiv3Ref)?.left - 100){
-                        coin3Ref.current.style.display = "none";
-                    }else {
-                        coin3Ref.current.style.display = "block";
-                    }
+
+                    // if (newPositionRight > getPlacementData(coinDiv1Ref)?.left - 100){
+                    //     coin1Ref.current.style.display = "none";
+                    // }else {
+                    //     coin1Ref.current.style.display = "block";
+                    // }
+                    //
+                    // if (newPositionRight > getPlacementData(coinDiv2Ref)?.left - 100){
+                    //     coin2Ref.current.style.display = "none";
+                    // }else {
+                    //     coin2Ref.current.style.display = "block";
+                    // }
+                    //
+                    // if (newPositionRight > getPlacementData(coinDiv3Ref)?.left - 100){
+                    //     coin3Ref.current.style.display = "none";
+                    // }else {
+                    //     coin3Ref.current.style.display = "block";
+                    // }
 
                     if (newPositionLeft > getPlacementData(infoRef)?.left) {
                         ch.style.transform = "scaleX(-1)";
@@ -197,16 +221,16 @@ function App() {
             <img src={logo} alt="" className="absolute left-[1%] top-[1%] h-[11%] "/>
                 <div className="absolute left-[40%] bottom-[25%] flex justify-between w-[100vw] font-[Montserrat] font-bold">
                     <div className="flex flex-col items-center justify-end text-center w-[25%]  ">
-                        <p ref={info1Ref} className=" mb-[80%] text-white text-center">Біздің бағдарламалау курстарына қосылыңыз
+                        <p ref={info1Ref} className=" mb-[75%] text-white text-center">Біздің бағдарламалау курстарына қосылыңыз
                             және технологияға деген құштарлығыңызды табысты мансапқа айналдырыңыз!</p>
                         <img src={coin} alt="" ref={ans1Ref} className="w-[150px]" id="ans2"/>
                     </div>
                     <div className="flex flex-col items-center justify-end text-center w-[25%]">
-                        <p ref={info2Ref} className="mb-[80%] text-white text-center">Біздің курс күрделі және түсініксіз нәрсені қызықты және түсінікті саяхатқа айналдыруға арналған. </p>
+                        <p ref={info2Ref} className="mb-[75%] text-white text-center">Біздің курс күрделі және түсініксіз нәрсені қызықты және түсінікті саяхатқа айналдыруға арналған. </p>
                         <img src={coin} alt="" ref={ans2Ref} className="w-[150px]" id="ans2"/>
                     </div>
                     <div className="flex flex-col items-center justify-end text-center w-[25%]">
-                        <p ref={info3Ref} className="mb-[80%] text-white text-center" >Бізбен сіз бағдарламалауды біртіндеп игере аласыз және IT-де мүмкіндіктер әлемін таба аласыз.</p>
+                        <p ref={info3Ref} className="mb-[75%] text-white text-center" >Бізбен сіз бағдарламалауды біртіндеп игере аласыз және IT-де мүмкіндіктер әлемін таба аласыз.</p>
                         <img src={coin} alt="" ref={ans3Ref} className="w-[150px]" id="ans2"/>
                     </div>
                 </div>
@@ -268,6 +292,17 @@ function App() {
                 <img src={coin}  ref={coin3Ref} alt=""className="w-[150px]"  />
             </div>
 
+            <div className="absolute flex left-[33%] top-[30%] z-[100] text-white text-purple-800  text-center font-[Montserrat] font-bold w-[8%]" ref={why1}>
+                <p>3 айда IT әлеміне 0-ден бастап кіруді үйренесіз</p>
+            </div>
+            <div className="absolute flex left-[48%] top-[30%] z-[100] text-white text-purple-800 text-center font-[Montserrat] font-bold w-[8%]"  ref={why2}>
+                <p>Түрлі сайттарды және ойындарды жасауды үйренесіз</p>
+            </div>
+            <div className="absolute flex left-[63%] top-[30%] z-[100] text-purple-800 text-center font-[Montserrat] font-bold w-[8%]" ref={why3} >
+                <p>Қалай өзіңіздің алғашқы табысыңызды табуды үйренесіз</p>
+            </div>
+
+
             <div className="absolute flex left-[29%] bottom-[23%] z-[100]" id="coin1" >
                 <img src={cactus} alt="" className="w-[640px]"/>
             </div>
@@ -285,10 +320,10 @@ function App() {
         <div className="relative w-[2586px]">
 
             <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door6Ref}>
-                <img src={door} alt=""className=""/>
+                <img src={door} alt="" className=""/>
             </div>
             <div className="absolute flex left-[80%] bottom-[20%] z-[100]" id="infoButton" ref={door7Ref}>
-                <img src={door} alt=""className=""/>
+                <img src={door} alt="" className=""/>
             </div>
 
             {video ? (
@@ -299,9 +334,6 @@ function App() {
             ) :
                 (<div></div>)}
 
-            {/*<div className="absolute flex left-[70%] top-[70%] z-[100]" id="hat" ref={hatDivRef}>*/}
-            {/*    <img src={hat} ref={hatRef} alt=""className="w-[180px]"/>*/}
-            {/*</div>*/}
             <div className="absolute flex left-[87%] z-[100] rotate-[-135deg]" id="spider">
                 <img src={spider} alt=""className="w-[350px]"/>
             </div>
@@ -349,10 +381,6 @@ function App() {
                 className="w-[150px]"
             />
         </div>
-
-
-        {/*<img src={background} alt = "" className="h-[100vh] w-auto"/>*/}
-
     </div>
   );
 }
