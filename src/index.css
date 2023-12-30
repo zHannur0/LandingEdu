@@ -11,8 +11,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-bode::-webkit-scrollbar {
-  display: none;
+body::-webkit-scrollbar {
+  width: 0.1em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* For WebKit (Chrome, Safari) and Blink (Opera) */
+body::-webkit-scrollbar {
+  width: 0;
 }
 
 code {
@@ -33,3 +42,23 @@ img {
   src: local("Stolzl"),
   url("./fonts/stolzl_regular.otf") format("truetype");
 }
+
+.coin-remove-animation {
+  transform: scale(0); /* or any other CSS properties to scale or move the coin */
+  transition: transform 0.5s ease; /* adjust the duration and easing as needed */
+}
+
+/* CSS */
+.info-hidden {
+  display: none;
+}
+
+.info-appear-animation {
+  transform: scale(1); /* or any other CSS properties to scale or move the coin */
+  transition: transform 0.5s ease; /* adjust the duration and easing as needed */
+}
+
+.info-appear-animation:not(.info-hidden) {
+  opacity: 1;
+}
+

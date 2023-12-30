@@ -12,11 +12,14 @@ import bg1 from "./accets/bg12.svg";
 import bg2 from "./accets/bg2.svg";
 import bg3 from "./accets/bg3.svg";
 import bg4 from "./accets/bg4.svg";
-import bg5 from "./accets/bg5.svg";
+import bg5 from "./accets/bg52.svg";
+import bg6 from "./accets/bg6.svg";
 import cactus from "./accets/cactus.svg";
 import run from "./accets/run3.gif";
 import Videos from "./components/videos";
 import x from "./accets/x.svg";
+import logo from "./accets/logo2.png";
+import ui from "./accets/ui.svg";
 function App() {
    const scrollRef = useHorizontalScroll();
    const [chSrc, setSrc] = useState(run);
@@ -48,7 +51,15 @@ function App() {
     const characterRef = useRef(null);
     const hatRef = useRef(null);
     const hatDivRef = useRef(null);
+    const info1Ref = useRef(null);
+    const info2Ref = useRef(null);
+    const info3Ref = useRef(null);
+
     const infoRef = useRef(null);
+    const why1 = useRef(null);
+    const why2 = useRef(null);
+    const why3 = useRef(null);
+
     const getPlacementData = (elementRef) => {
         if (!elementRef?.current) return null
         return elementRef?.current?.getBoundingClientRect()
@@ -66,35 +77,45 @@ function App() {
                     const newPositionLeft = ch?.getBoundingClientRect()?.left;
                     const newPositionRight = ch?.getBoundingClientRect()?.left;
 
-                    if(newPositionRight > getPlacementData(ans1Ref)?.left && ans1) {
-                        setAns1((prevAns1) => {
-                            return false;
-                        });
-                    }else {
-                        setAns1((prevAns1) => {
-                            return true;
-                        });
+                    if (newPositionRight > getPlacementData(ans1Ref)?.left && info1Ref.current.style.display === "none") {
+                        ans1Ref.current.classList.add('coin-remove-animation');
+                        setTimeout(() => {
+                            info1Ref.current.style.display = 'block';
+                            info1Ref.current.classList.add('info-appear-animation');
+                            ans1Ref.current.style.display = 'none';
+                        }, 500);
+                    } if (newPositionRight > getPlacementData(ans2Ref)?.left && info2Ref.current.style.display === "none") {
+                        ans2Ref.current.classList.add('coin-remove-animation');
+                        setTimeout(() => {
+                            info2Ref.current.style.display = 'block';
+                            info2Ref.current.classList.add('info-appear-animation');
+                            ans2Ref.current.style.display = 'none';
+                        }, 500);
+                    } if (newPositionRight > getPlacementData(ans3Ref)?.left && info3Ref.current.style.display === "none") {
+                        ans3Ref.current.classList.add('coin-remove-animation');
+                        setTimeout(() => {
+                            info3Ref.current.style.display = 'block';
+                            info3Ref.current.classList.add('info-appear-animation');
+                            ans3Ref.current.style.display = 'none';
+                        }, 500);
                     }
 
-                    if(newPositionRight > getPlacementData(ans2Ref)?.left && ans2) {
-                        setAns2((prevAns1) => {
-                            return false;
-                        });
-                    }else {
-                        setAns2((prevAns1) => {
-                            return true;
-                        });
+                    if (newPositionRight < getPlacementData(info1Ref)?.left) {
+                        ans1Ref.current.style.display = "block";
+                        info1Ref.current.style.display = "none";
+                        ans1Ref.current.classList.remove('coin-remove-animation');
+
+                    } if (newPositionRight < getPlacementData(info2Ref)?.left) {
+                        ans2Ref.current.style.display = "block";
+                        info2Ref.current.style.display = "none";
+                        ans2Ref.current.classList.remove('coin-remove-animation');
+
+                    } if (newPositionRight < getPlacementData(info3Ref)?.left) {
+                        ans3Ref.current.style.display = "block";
+                        info3Ref.current.style.display = "none";
+                        ans3Ref.current.classList.remove('coin-remove-animation');
                     }
 
-                    if(newPositionRight > getPlacementData(ans3Ref)?.left && ans3) {
-                        setAns3((prevAns1) => {
-                            return false;
-                        });
-                    }else {
-                        setAns3((prevAns1) => {
-                            return true;
-                        });
-                    }
 
                     if (newPositionRight > getPlacementData(coinDiv1Ref)?.left - 100){
                         coin1Ref.current.style.display = "none";
@@ -114,7 +135,7 @@ function App() {
                         coin3Ref.current.style.display = "block";
                     }
 
-                    if (newPositionLeft > getPlacementData(infoRef)?.right-200) {
+                    if (newPositionLeft > getPlacementData(infoRef)?.left) {
                         ch.style.transform = "scaleX(-1)";
                         setSrc(er);
 
@@ -173,28 +194,23 @@ function App() {
         return (
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
-            <div className="absolute flex items-center left-[40%] z-[100] h-[100vh]">
-                <div className="flex items-center mb-[10%] justify-between w-[90vw]">
-                    {ans1 ? <img src={ans} alt="" ref={ans1Ref} className="w-[50px]" id="ans2"/> :
-                        <div>
-                            <h1 className="text-2xl font-[Stolzl] text-white" ref={ans1Ref}> Lorem ipsum dolar
-                                amet </h1>
-                        </div>}
-
-                    {
-                        ans2 ?  <img src={ans} alt="" ref={ans2Ref} className="w-[50px]" id="ans2"/> :
-                            <div>
-                                <h1 className="text-2xl font-[Stolzl] text-white" ref={ans2Ref}> Lorem ipsum dolar amet  </h1>
-                            </div>
-                    }
-                    {
-                        ans3 ?  <img src={ans} alt="" ref={ans3Ref} className="w-[50px]" id="ans3"/> :
-                            <div>
-                                <h1 className="text-2xl font-[Stolzl] text-white" ref={ans3Ref}> Lorem ipsum dolar amet  </h1>
-                            </div>
-                    }
+            <img src={logo} alt="" className="absolute left-[1%] top-[1%] h-[11%] "/>
+                <div className="absolute left-[40%] bottom-[25%] flex justify-between w-[100vw] font-[Montserrat] font-bold">
+                    <div className="flex flex-col items-center justify-end text-center w-[25%]  ">
+                        <p ref={info1Ref} className=" mb-[80%] text-white text-center">Біздің бағдарламалау курстарына қосылыңыз
+                            және технологияға деген құштарлығыңызды табысты мансапқа айналдырыңыз!</p>
+                        <img src={coin} alt="" ref={ans1Ref} className="w-[150px]" id="ans2"/>
+                    </div>
+                    <div className="flex flex-col items-center justify-end text-center w-[25%]">
+                        <p ref={info2Ref} className="mb-[80%] text-white text-center">Біздің курс күрделі және түсініксіз нәрсені қызықты және түсінікті саяхатқа айналдыруға арналған. </p>
+                        <img src={coin} alt="" ref={ans2Ref} className="w-[150px]" id="ans2"/>
+                    </div>
+                    <div className="flex flex-col items-center justify-end text-center w-[25%]">
+                        <p ref={info3Ref} className="mb-[80%] text-white text-center" >Бізбен сіз бағдарламалауды біртіндеп игере аласыз және IT-де мүмкіндіктер әлемін таба аласыз.</p>
+                        <img src={coin} alt="" ref={ans3Ref} className="w-[150px]" id="ans2"/>
+                    </div>
                 </div>
-            </div>
+
             <div className="absolute flex left-[85%] bottom-[20%] z-[100]" ref={door1Ref}>
                 <img src={door}  alt=""className=""/>
             </div>
@@ -290,24 +306,29 @@ function App() {
                 <img src={spider} alt=""className="w-[350px]"/>
             </div>
             <div className="absolute flex flex-col left-[30%] top-[15%] z-[100] items-center gap-8" id="watch">
-                <p className="font-[Stolzl] text-white text-center w-[500px] text-2xl">Егер қызықсаңыз бір сабағымызды қарап көріңіз. Солай біздің білім беруімізге баға беріңіз.</p>
+                <p className="font-[Montserrat] font-bold text-white text-center w-[500px] text-2xl">Егер қызықсаңыз бір сабағымызды қарап көріңіз. Солай біздің білім беруімізге баға беріңіз.</p>
                 <img src={watch} alt="" className="w-[500px]" onClick={() => setVideo(!video)}/>
             </div>
             <img src={bg4} alt="" className="h-[100vh] w-auto"/>
 
         </div>
 
-        <div className="relative w-[4471px]">
-            <div className="absolute flex left-[68%] top-[15%] z-[100]" id="infoButton" ref={infoRef}>
+        <div className="relative w-[3473px]">
+            <img src={bg6} alt="" className="h-[100vh] w-auto"/>
+
+        </div>
+
+        <div className="relative w-[4089px]">
+            <div className="absolute flex left-[73%] top-[15%] z-[100]" id="infoButton" ref={infoRef}>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
-                <img src={infoButton} alt="" className="w-[450px]"/>
+                <img src={infoButton} alt="" className="w-[350px]"/>
                 </a>
             </div>
+
             <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door8Ref}>
                 <img src={door} alt="" className=""/>
             </div>
             <img src={bg5} alt="" className="h-[100vh] w-auto"/>
-
         </div>
 
 
