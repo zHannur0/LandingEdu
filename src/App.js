@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import ans from "./accets/ans.svg";
 import buy from "./accets/Buy.svg";
 import coin from "./accets/coin.svg";
 import spider from "./accets/spider.png";
@@ -19,14 +18,14 @@ import run from "./accets/run3.gif";
 import Videos from "./components/videos";
 import x from "./accets/x.svg";
 import logo from "./accets/logo2.png";
-import ui from "./accets/ui.svg";
+import board1 from "./accets/board1.svg";
+import board2 from "./accets/board2.svg";
+import board3 from "./accets/board3.svg";
+import infoText from "./accets/infoText.svg"
 function App() {
    const scrollRef = useHorizontalScroll();
    const [chSrc, setSrc] = useState(run);
    const [video, setVideo] = useState(false);
-    const[ans1, setAns1] = useState(true);
-    const[ans2, setAns2] = useState(true);
-    const[ans3, setAns3] = useState(true);
     const ans1Ref = useRef(null);
     const ans2Ref = useRef(null);
     const ans3Ref = useRef(null);
@@ -49,12 +48,9 @@ function App() {
     const coin2Ref = useRef(null);
     const coin3Ref = useRef(null);
     const characterRef = useRef(null);
-    const hatRef = useRef(null);
-    const hatDivRef = useRef(null);
     const info1Ref = useRef(null);
     const info2Ref = useRef(null);
     const info3Ref = useRef(null);
-
     const infoRef = useRef(null);
     const why1 = useRef(null);
     const why2 = useRef(null);
@@ -219,33 +215,36 @@ function App() {
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
             <img src={logo} alt="" className="absolute left-[1%] top-[1%] h-[11%] "/>
-                <div className="absolute left-[40%] bottom-[25%] flex justify-between w-[100vw] font-[Montserrat] font-bold">
+                <div className="absolute left-[40%] bottom-[35%] flex justify-between w-[100vw] font-[Montserrat] font-bold">
                     <div className="flex flex-col items-center justify-end text-center w-[25%]  ">
-                        <p ref={info1Ref} className=" mb-[75%] text-white text-center">Біздің бағдарламалау курстарына қосылыңыз
-                            және технологияға деген құштарлығыңызды табысты мансапқа айналдырыңыз!</p>
+                        <img src={board1} alt="" ref={info1Ref} className="text-white text-center w-[70%]"/>
                         <img src={coin} alt="" ref={ans1Ref} className="w-[150px]" id="ans2"/>
                     </div>
                     <div className="flex flex-col items-center justify-end text-center w-[25%]">
-                        <p ref={info2Ref} className="mb-[75%] text-white text-center">Біздің курс күрделі және түсініксіз нәрсені қызықты және түсінікті саяхатқа айналдыруға арналған. </p>
+                        <img src={board2} alt="" ref={info2Ref} className="text-white text-center w-[70%]"/>
                         <img src={coin} alt="" ref={ans2Ref} className="w-[150px]" id="ans2"/>
                     </div>
                     <div className="flex flex-col items-center justify-end text-center w-[25%]">
-                        <p ref={info3Ref} className="mb-[75%] text-white text-center" >Бізбен сіз бағдарламалауды біртіндеп игере аласыз және IT-де мүмкіндіктер әлемін таба аласыз.</p>
+                        <img src={board3} alt="" ref={info3Ref} className="text-white text-center w-[70%]"/>
                         <img src={coin} alt="" ref={ans3Ref} className="w-[150px]" id="ans2"/>
                     </div>
-                </div>
 
+                </div>
+            <div className="absolute flex right-[3%] top-[2%] z-[100]">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
+                    <img src={buy} alt=""className="w-[200px]" />
+                </a>
+            </div>
             <div className="absolute flex left-[85%] bottom-[20%] z-[100]" ref={door1Ref}>
                 <img src={door}  alt=""className=""/>
             </div>
             <img src={bg1} alt="" className="h-[100vh] w-auto"/>
         </div>
         <div className="relative w-[2775px]">
-            <div className="absolute flex items-center left-[36%] top-[1%] z-[100] h-[100vh]" id="buy1">
+            <div className="absolute flex left-[36%] top-[36%] z-[100] h-[100vh]" id="buy1">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
-                    <img src={buy} alt=""className="w-[400px]" />
+                    <img src={buy} alt="" className="w-[400px]" />
                 </a>
-
             </div>
             <div className="absolute flex left-[80%] top-[2%] z-[100]" id="buy2">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
@@ -292,14 +291,14 @@ function App() {
                 <img src={coin}  ref={coin3Ref} alt=""className="w-[150px]"  />
             </div>
 
-            <div className="absolute flex left-[33%] top-[30%] z-[100] text-white text-purple-800  text-center font-[Montserrat] font-bold w-[8%]" ref={why1}>
-                <p>3 айда IT әлеміне 0-ден бастап кіруді үйренесіз</p>
+            <div className="absolute flex left-[33%] top-[30%] z-[100] text-black  text-center font-[Montserrat] font-bold w-[8%]" ref={why1}>
+                <p>Курс барысында 2 ойын ойлап тауып оны Playmarket-ке немесе AppStore-ға саласыз </p>
             </div>
-            <div className="absolute flex left-[48%] top-[30%] z-[100] text-white text-purple-800 text-center font-[Montserrat] font-bold w-[8%]"  ref={why2}>
-                <p>Түрлі сайттарды және ойындарды жасауды үйренесіз</p>
+            <div className="absolute flex left-[48%] top-[30%] z-[100] text-black text-center font-[Montserrat] font-bold w-[8%]"  ref={why2}>
+                <p>Netflix-тің жасалу жолын түсініп, өзңіздің сайтыңызды ойлап табасыз</p>
             </div>
-            <div className="absolute flex left-[63%] top-[30%] z-[100] text-purple-800 text-center font-[Montserrat] font-bold w-[8%]" ref={why3} >
-                <p>Қалай өзіңіздің алғашқы табысыңызды табуды үйренесіз</p>
+            <div className="absolute flex left-[63%] top-[30%] z-[100] text-black text-center font-[Montserrat] font-bold w-[8%]" ref={why3} >
+                <p>IT арқылы алғаш табыс табуды үйренесіз</p>
             </div>
 
 
@@ -347,14 +346,17 @@ function App() {
 
         <div className="relative w-[3473px]">
             <img src={bg6} alt="" className="h-[100vh] w-auto"/>
-
         </div>
 
         <div className="relative w-[4089px]">
-            <div className="absolute flex left-[73%] top-[15%] z-[100]" id="infoButton" ref={infoRef}>
+            <div className="absolute flex flex-col items-center left-[73%] top-[10%] z-[100] gap-6" ref={infoRef}>
+                <img src={infoText} alt=""/>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSnLj_S77CAfcfOFc_o9JcsUNMxSqbrbkx9MFjqkyyNyLX0A/viewform">
                 <img src={infoButton} alt="" className="w-[350px]"/>
                 </a>
+                <p className="font-[Montserrat] font-bold text-black text-center w-[500px]">
+                    <a href="https://edukey.kz/">edukey.kz</a> платформасындағы 4 курсқа және ағылшын тілі курстарына қол жеткізіңіз
+                </p>
             </div>
 
             <div className="absolute flex left-[10%] bottom-[20%] z-[100]" id="infoButton" ref={door8Ref}>
