@@ -8,7 +8,7 @@ function LoadingPage() {
                 backgroundImage: `url(${bg})`,
                 backgroundSize: 'cover',
             }}>
-                <img src={logo} alt="" className={"w-[60%]"}/>
+                <img src={logo} alt="" className={"w-[50%]"}/>
                 <div className="loading">
                     <div className="loading-dot"></div>
                     <div className="loading-dot"></div>

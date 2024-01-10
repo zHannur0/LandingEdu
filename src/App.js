@@ -68,7 +68,7 @@ function App() {
     }
 
     function useMoveCharacter() {
-        const charRef = useRef();
+        const charRef = useRef(null);
         useEffect(() => {
             const ch = charRef.current;
             if (ch) {
@@ -208,10 +208,10 @@ function App() {
 
         return (
             <>
-                {isLoading ? (
-                    <LoadingPage/>
-                ) : (
-                    <>
+            {/*//     {isLoading ? (*/}
+            {/*//         <LoadingPage/>*/}
+            {/*//     ) : (*/}
+            {/*//         <>*/}
             <BrowserView>
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
@@ -372,7 +372,7 @@ function App() {
 
 
         <div
-            ref={chRef}
+            ref={useMoveCharacter()}
             style={{
                 position: 'fixed',
                 left: '40%',
@@ -390,12 +390,11 @@ function App() {
         </div>
     </div>
             </BrowserView>
-
                 <MobileView>
                     <MobileApp/>
                 </MobileView>
-                    </>
-                )}
+                {/*//     </>*/}
+                {/*// )}*/}
             </>
 
 
