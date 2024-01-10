@@ -194,24 +194,9 @@ function App() {
         return charRef;
     }
     const chRef = useMoveCharacter();
-    const [isLoading, setIsLoading] = useState(true);
-
-    useLayoutEffect(() => {
-        // Эмулируем задержку загрузки для примера
-        const fakeApiCall = setTimeout(() => {
-            setIsLoading(false);
-        }, 3000); // Измените значение на реальное время загрузки
-
-        // Очистка таймера при размонтировании компонента
-        return () => clearTimeout(fakeApiCall);
-    }, []);
 
         return (
             <>
-            {/*//     {isLoading ? (*/}
-            {/*//         <LoadingPage/>*/}
-            {/*//     ) : (*/}
-            {/*//         <>*/}
             <BrowserView>
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
