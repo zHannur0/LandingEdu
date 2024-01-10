@@ -22,6 +22,8 @@ import board1 from "./accets/board1.svg";
 import board2 from "./accets/board2.svg";
 import board3 from "./accets/board3.svg";
 import infoText from "./accets/infoText.svg"
+import {BrowserView, MobileView} from 'react-device-detect';
+import MobileApp from "./pages/mobileVersion";
 function App() {
    const scrollRef = useHorizontalScroll();
    const [chSrc, setSrc] = useState(run);
@@ -136,25 +138,6 @@ function App() {
                         why3.current.style.display = "none";
                     }
 
-
-                    // if (newPositionRight > getPlacementData(coinDiv1Ref)?.left - 100){
-                    //     coin1Ref.current.style.display = "none";
-                    // }else {
-                    //     coin1Ref.current.style.display = "block";
-                    // }
-                    //
-                    // if (newPositionRight > getPlacementData(coinDiv2Ref)?.left - 100){
-                    //     coin2Ref.current.style.display = "none";
-                    // }else {
-                    //     coin2Ref.current.style.display = "block";
-                    // }
-                    //
-                    // if (newPositionRight > getPlacementData(coinDiv3Ref)?.left - 100){
-                    //     coin3Ref.current.style.display = "none";
-                    // }else {
-                    //     coin3Ref.current.style.display = "block";
-                    // }
-
                     if (newPositionLeft > getPlacementData(infoRef)?.left) {
                         ch.style.transform = "scaleX(-1)";
                         setSrc(er);
@@ -210,8 +193,9 @@ function App() {
         return charRef;
     }
 
-
         return (
+            <>
+            <BrowserView>
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
             <img src={logo} alt="" className="absolute left-[1%] top-[1%] h-[11%] "/>
@@ -327,8 +311,12 @@ function App() {
 
             {video ? (
                 <>
-                    <div> <img src={x} className='w-[22px] h-[22px] hover:bg-orange-500 fixed z-[250] top-[5%] right-[24%]' onClick={() => setVideo(!video)}></img></div>
-                    <Videos/>
+                    <div>
+                        <img src={x} className='w-[22px] h-[22px] hover:bg-orange-500 fixed z-[250] top-[5%] right-[24%]' onClick={() => setVideo(!video)}>
+                        </img>
+                        <Videos/>
+                    </div>
+
                 </>
             ) :
                 (<div></div>)}
@@ -384,6 +372,13 @@ function App() {
             />
         </div>
     </div>
+            </BrowserView>
+                <MobileView>
+                    <MobileApp/>
+                </MobileView>
+            </>
+
+
   );
 }
 

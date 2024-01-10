@@ -62,3 +62,16 @@ img {
   opacity: 1;
 }
 
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px); /* Измените это значение на ваше усмотрение */
+  }
+}
+
+.moving-element {
+  animation: moveUpDown 2s infinite; /* Измените "2s" на желаемую длительность анимации */
+  /* Другие стили для вашего элемента */
+}
