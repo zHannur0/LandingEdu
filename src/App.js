@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState, useLayoutEffect} from "react";
 import buy from "./accets/Buy.svg";
 import coin from "./accets/coin.svg";
 import spider from "./accets/spider.png";
@@ -24,6 +24,7 @@ import board3 from "./accets/board3.svg";
 import infoText from "./accets/infoText.svg"
 import {BrowserView, MobileView} from 'react-device-detect';
 import MobileApp from "./pages/mobileVersion";
+import LoadingPage from "./pages/loadingPage";
 function App() {
    const scrollRef = useHorizontalScroll();
    const [chSrc, setSrc] = useState(run);
@@ -192,9 +193,25 @@ function App() {
 
         return charRef;
     }
+    const chRef = useMoveCharacter();
+    const [isLoading, setIsLoading] = useState(true);
+
+    useLayoutEffect(() => {
+        // Эмулируем задержку загрузки для примера
+        const fakeApiCall = setTimeout(() => {
+            setIsLoading(false);
+        }, 3000); // Измените значение на реальное время загрузки
+
+        // Очистка таймера при размонтировании компонента
+        return () => clearTimeout(fakeApiCall);
+    }, []);
 
         return (
             <>
+                {isLoading ? (
+                    <LoadingPage/>
+                ) : (
+                    <>
             <BrowserView>
     <div ref={scrollRef} className="App relative inline flex overflow-x-auto ">
         <div className="relative w-[4584px]">
@@ -355,7 +372,7 @@ function App() {
 
 
         <div
-            ref={useMoveCharacter()}
+            ref={chRef}
             style={{
                 position: 'fixed',
                 left: '40%',
@@ -373,9 +390,12 @@ function App() {
         </div>
     </div>
             </BrowserView>
+
                 <MobileView>
                     <MobileApp/>
                 </MobileView>
+                    </>
+                )}
             </>
 
 
