@@ -12,6 +12,11 @@ import board3 from "../accets/board3.svg";
 import coursePrice from "../accets/mobile-version/coursePrice.png";
 import infoText from "../accets/infoText.svg";
 import info from "../accets/info.svg";
+import courseAuthor from "../accets/mobile-version/courseAuthor.svg"
+import erzhanPhoto from "../accets/mobile-version/erzhan.png";
+import erzhanName from "../accets/mobile-version/erzhanName.svg";
+import star from "../accets/mobile-version/star.svg";
+import insta from "../accets/mobile-version/insta.png";
 function MobileApp() {
     return(
         <>
@@ -50,11 +55,29 @@ function MobileApp() {
                 backgroundPosition: "center",
             }}>
             </div>
-            <div className="h-[1230px]" style={{
+            <div className="" style={{
                 backgroundImage: `url(${bg4})`,
                 backgroundSize: 'cover',
                 backgroundPosition: "center",
             }}>
+                <div className={"flex flex-col items-center pt-[15%] pb-[20%] font-bold font-[Montserrat] gap-8 text-l text-white text-center"}>
+                    <img src={courseAuthor} alt=""/>
+                    <img src={erzhanPhoto} alt=""/>
+                    <img src={erzhanName} alt="" />
+                    <a href="https://www.instagram.com/madiever?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className={"w-[10%]"}>
+                        <img src={insta} alt="" className={"w-[100%]"} />
+
+                    </a>
+                    <img src={star} alt=""/>
+                    <p className={"w-[70%]"}>4 жыл бағдарламалауда тәжірибесі бар</p>
+                    <img src={star} alt=""/>
+                    <p className={"w-[70%]"}>АТФ, АЛЬФА, БЦК банктерінде тәжірибе </p>
+                    <img src={star} alt=""/>
+                    <p className={"w-[70%]"}>Оқушылар тәрбиелеуде үлкен нәтижеге жетті</p>
+                    <img src={star} alt=""/>
+                    <p className={"w-[70%]"}>EduCode СЕО</p>
+
+                </div>
             </div>
             <div className="h-[665px]" style={{
                 backgroundImage: `url(${bg5})`,
