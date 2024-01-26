@@ -74,7 +74,7 @@ function App() {
             if (ch) {
                 const onWheel = (e) => {
                     const newPositionLeft = ch?.getBoundingClientRect()?.left;
-                    const newPositionRight = ch?.getBoundingClientRect()?.left;
+                    const newPositionRight = ch?.getBoundingClientRect()?.right;
 
                     if (newPositionRight > getPlacementData(ans1Ref)?.left && info1Ref.current.style.display === "none") {
                         ans1Ref.current.classList.add('coin-remove-animation');
