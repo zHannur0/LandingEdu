@@ -116,9 +116,9 @@ function MobileApp() {
                             }
                         } else {
                             if (newPositionTop < bg1Ref.current?.getBoundingClientRect().bottom) {
-                                subtractedTopValue += 2;
+                                subtractedTopValue += 4;
                                 if (newPositionTop > bg1Ref.current?.getBoundingClientRect().top) {
-                                    subtractedRightValue += 2;
+                                    subtractedRightValue += 4;
                                 }
                             }
                         }
