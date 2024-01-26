@@ -128,9 +128,9 @@ function MobileApp() {
                     }
                 };
 
-                mainRef.current.addEventListener('wheel', onWheel);
+                mainRef.current.addEventListener('touchmove', onWheel);
 
-                return () => mainRef.current?.removeEventListener('wheel', onWheel);
+                return () => mainRef.current?.removeEventListener('touchmove', onWheel);
             }
         }, []);
         return charRef;
